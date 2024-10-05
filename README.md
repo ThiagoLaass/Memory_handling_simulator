@@ -1,6 +1,6 @@
 
 # Simulação do Algoritmo SJF Preemptivo
-Este projeto implementa uma simulação do algoritmo Shortest Job First (SJF) Preemptivo em Python, utilizando a biblioteca Tkinter para criar uma interface gráfica amigável para a entrada e visualização dos processos.
+Este projeto implementa uma simulação do algoritmo Shortest Job First (SJF) Preemptivo em Python, utilizando a biblioteca Tkinter para criar uma interface gráfica amigável para a entrada e visualização dos processos. ***A fim de testar o algoritmo, apenas execute o mesmo***
 
 ## Requisitos
 - Python 3.x
