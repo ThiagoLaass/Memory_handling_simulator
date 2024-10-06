@@ -111,64 +111,87 @@ def calcular_tempo_espera_medio(processos):
         log_espera(f"{processo.nome} - Tempo de Espera: {processo.tempo_espera}")
     log_espera(f"Tempo médio de espera: {media_espera:.2f}")
 
+def on_frame_configure(event):
+    # Reset the scroll region to encompass the entire frame
+    canvas.configure(scrollregion=canvas.bbox("all"))
+
+def add_scrollbar_to_window():
+    global canvas
+    global frame_content
+
+    # Create a canvas
+    canvas = tk.Canvas(janela, bg="#f0f0f0")
+    canvas.grid(row=0, column=0, sticky="nsew")
+
+    # Add a vertical scrollbar linked to the canvas
+    scrollbar = tk.Scrollbar(janela, orient="vertical", command=canvas.yview)
+    scrollbar.grid(row=0, column=1, sticky="ns")
+    canvas.configure(yscrollcommand=scrollbar.set)
+
+    # Create a frame inside the canvas to hold all the widgets
+    frame_content = tk.Frame(canvas, bg="#f0f0f0")
+
+    # Add the frame to the canvas
+    canvas.create_window((0, 0), window=frame_content, anchor="nw")
+
+    # Bind the frame's configuration to update the canvas' scroll region
+    frame_content.bind("<Configure>", on_frame_configure)
+
+# Initialize main window
 janela = tk.Tk()
 janela.title("Simulação SJF Preemptivo")
-janela.geometry("600x600")
-janela.configure(bg="#F7F9F9")
-frame_espera = tk.Frame(janela, bg="#ffffff", padx=10, pady=10)
-frame_espera.grid(row=4, column=0, padx=10, pady=5, sticky="nsew")
+janela.configure(bg="#f0f0f0")
 
-log_label_espera = tk.Label(frame_espera, text="Tempo de Espera Médio", font=("Arial", 14, "bold"), bg="#F7F9F9", fg="#2C3E50")
-log_label_espera.pack(pady=(0, 10))
+# Call the function to add scrollbar to the whole window
+add_scrollbar_to_window()
 
-scrollbar_espera = tk.Scrollbar(frame_espera)
-scrollbar_espera.pack(side=tk.RIGHT, fill=tk.Y)
+# Create the process input section and status frames inside the frame_content
+frame_num_processos = tk.Frame(frame_content, bg="#f0f0f0", padx=10, pady=10)
+frame_num_processos.grid(row=0, column=0, padx=10, pady=5, sticky="nsew")
 
-log_texto_espera = tk.Text(frame_espera, height=5, width=70, bg="#ECF0F1", fg="#2C3E50", font=("Arial", 11), yscrollcommand=scrollbar_espera.set)
-log_texto_espera.pack(side=tk.LEFT, fill=tk.BOTH)
-scrollbar_espera.config(command=log_texto_espera.yview)
-frame_num_processos = tk.Frame(janela, bg="#F7F9F9", padx=10, pady=10)
-frame_num_processos.grid(row=0, column=0, padx=10, pady=10, sticky="nsew")
-
-label_num_processos = tk.Label(frame_num_processos, text="Número de processos:", font=("Arial", 12, "bold"), bg="#F7F9F9", fg="#2C3E50")
+label_num_processos = tk.Label(frame_num_processos, text="Número de processos:", font=("Arial", 12), bg="#f0f0f0", fg="#333333")
 label_num_processos.grid(row=0, column=0, padx=5, pady=5, sticky="w")
 
-entry_num_processos = tk.Entry(frame_num_processos, width=7, font=("Arial", 12))
+entry_num_processos = tk.Entry(frame_num_processos, width=5)
 entry_num_processos.grid(row=0, column=1, padx=5, pady=5)
 
-botao_gerar = tk.Button(frame_num_processos, text="Gerar Campos", command=gerar_campos_processos, bg="#2980B9", fg="white", font=("Arial", 10, "bold"))
-botao_gerar.grid(row=0, column=2, padx=10, pady=5)
+botao_gerar = tk.Button(frame_num_processos, text="Gerar Campos", command=gerar_campos_processos, bg="#007BFF", fg="white", font=("Arial", 11, "bold"))
+botao_gerar.grid(row=0, column=2, padx=5, pady=5)
 
-frame_processos = tk.Frame(janela, bg="#ffffff", padx=10, pady=10)
+frame_processos = tk.Frame(frame_content, bg="#ffffff", padx=10, pady=10)
 frame_processos.grid(row=1, column=0, padx=10, pady=5, sticky="nsew")
 
-botao_iniciar = tk.Button(janela, text="Iniciar Simulação", command=iniciar_simulacao, bg="#27AE60", fg="white", font=("Arial", 12, "bold"))
-botao_iniciar.grid(row=2, column=0, pady=20, sticky="nsew")
+botao_iniciar = tk.Button(frame_content, text="Iniciar Simulação", command=iniciar_simulacao, bg="#007BFF", fg="white", font=("Arial", 12, "bold"))
+botao_iniciar.grid(row=2, column=0, pady=10, sticky="nsew")
 
-frame_status = tk.Frame(janela, bg="#ffffff", padx=10, pady=10)
+frame_status = tk.Frame(frame_content, bg="#ffffff", padx=10, pady=10)
 frame_status.grid(row=3, column=0, padx=10, pady=5, sticky="nsew")
 
-status_label = tk.Label(frame_status, text="Status da Simulação", font=("Arial", 14, "bold"), bg="#F7F9F9", fg="#2C3E50")
+status_label = tk.Label(frame_status, text="Status da Simulação", font=("Arial", 14, "bold"), bg="#f0f0f0", fg="#333333")
 status_label.pack(pady=(0, 10))
 
-scrollbar = tk.Scrollbar(frame_status)
-scrollbar.pack(side=tk.RIGHT, fill=tk.Y)
+scrollbar_status = tk.Scrollbar(frame_status)
+scrollbar_status.pack(side=tk.RIGHT, fill=tk.Y)
 
-status_texto = tk.Text(frame_status, height=10, width=70, bg="#ECF0F1", fg="#2C3E50", font=("Arial", 11), yscrollcommand=scrollbar.set)
+status_texto = tk.Text(frame_status, height=10, width=70, bg="#ECF0F1", fg="#333333", font=("Arial", 11), yscrollcommand=scrollbar_status.set)
 status_texto.pack(side=tk.LEFT, fill=tk.BOTH)
-scrollbar.config(command=status_texto.yview)
+scrollbar_status.config(command=status_texto.yview)
 
-frame_espera = tk.Frame(janela, bg="#ffffff", padx=10, pady=10)
+frame_espera = tk.Frame(frame_content, bg="#ffffff", padx=10, pady=10)
 frame_espera.grid(row=4, column=0, padx=10, pady=5, sticky="nsew")
 
-log_label_espera = tk.Label(frame_espera, text="Tempo de Espera Médio", font=("Arial", 14, "bold"), bg="#F7F9F9", fg="#2C3E50")
+log_label_espera = tk.Label(frame_espera, text="Tempo de Espera Médio", font=("Arial", 14, "bold"), bg="#f0f0f0", fg="#333333")
 log_label_espera.pack(pady=(0, 10))
 
 scrollbar_espera = tk.Scrollbar(frame_espera)
 scrollbar_espera.pack(side=tk.RIGHT, fill=tk.Y)
 
-log_texto_espera = tk.Text(frame_espera, height=5, width=70, bg="#ECF0F1", fg="#2C3E50", font=("Arial", 11), yscrollcommand=scrollbar_espera.set)
+log_texto_espera = tk.Text(frame_espera, height=6, width=70, bg="#ECF0F1", fg="#333333", font=("Arial", 11), yscrollcommand=scrollbar_espera.set)
 log_texto_espera.pack(side=tk.LEFT, fill=tk.BOTH)
 scrollbar_espera.config(command=log_texto_espera.yview)
+
+# Adjust the scrollable window dimensions
+janela.grid_rowconfigure(0, weight=1)
+janela.grid_columnconfigure(0, weight=1)
 
 janela.mainloop()
