@@ -30,3 +30,8 @@ Entrada de Processos:
 - Processo 1: Tempo de execução: 5, Tempo de chegada: 0
 - Processo 2: Tempo de execução: 3, Tempo de chegada: 1
 - Processo 3: Tempo de execução: 8, Tempo de chegada: 2
+
+## Integrantes do grupo
+- Thiago Laass
+- Lucas Valente
+- Luisa Clara de Paula
