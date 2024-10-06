@@ -11,7 +11,7 @@ Este projeto implementa uma simulação do algoritmo Shortest Job First (SJF) Pr
 ### Explicação da Interface
 A interface permite que o usuário insira até 6 processos, cada um com seu tempo de execução e tempo de chegada.
 Após clicar em "Iniciar Simulação", o status da execução é exibido na área de texto da interface. A cada unidade de tempo, o processo com o menor tempo de execução restante é selecionado e executado.
-A simulação considera a chegada dos processos, executando apenas os que estão disponíveis no momento, e é atualizada em tempo real na interface.
+A simulação considera a chegada dos processos, executando apenas os que estão disponíveis no momento, e é atualizada em tempo real na interface. **Caso a interface fique pequena demais, apenas coloque em tela cheia**
 
 ### A interface foi desenvolvida com um esquema de cores amigável e simples:
 
