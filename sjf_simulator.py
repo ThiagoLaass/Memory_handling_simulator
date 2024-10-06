@@ -102,7 +102,7 @@ def gerar_campos_processos():
         widget.destroy()
 
     titulo_label = tk.Label(frame_processos, text="Entrada de Processos", font=("Arial", 14, "bold"), bg="#ffffff", fg="#333333")
-    titulo_label.grid(row=0, column=0, columnspan=5, pady=(0, 10))
+    titulo_label.grid(row=0, column=0, columnspan=5, pady=(0, 10), sticky="w")
 
     global entradas
     entradas = []
@@ -124,7 +124,7 @@ janela.title("Simulação SJF Preemptivo")
 janela.configure(bg="#f0f0f0")
 
 frame_num_processos = tk.Frame(janela, bg="#f0f0f0", padx=10, pady=10)
-frame_num_processos.grid(row=0, column=0, padx=20, pady=10)
+frame_num_processos.grid(row=0, column=0, padx=20, pady=10, sticky="nsew")
 
 label_num_processos = tk.Label(frame_num_processos, text="Informe o número de processos:", font=("Arial", 12), bg="#f0f0f0", fg="#333333")
 label_num_processos.grid(row=0, column=0, padx=5, pady=5, sticky="w")
@@ -136,13 +136,13 @@ botao_gerar = tk.Button(frame_num_processos, text="Gerar Campos", command=gerar_
 botao_gerar.grid(row=0, column=2, padx=5, pady=5)
 
 frame_processos = tk.Frame(janela, bg="#ffffff", padx=10, pady=10)
-frame_processos.grid(row=1, column=0, padx=20, pady=10)
+frame_processos.grid(row=1, column=0, padx=20, pady=10, sticky="nsew")
 
 botao_iniciar = tk.Button(janela, text="Iniciar Simulação", command=iniciar_simulacao, bg="#007BFF", fg="white", font=("Arial", 12, "bold"))
-botao_iniciar.grid(row=2, column=0, pady=20)
+botao_iniciar.grid(row=2, column=0, pady=20, sticky="nsew")
 
 frame_status = tk.Frame(janela, bg="#ffffff", padx=10, pady=10)
-frame_status.grid(row=3, column=0, padx=20, pady=10)
+frame_status.grid(row=3, column=0, padx=20, pady=10, sticky="nsew")
 
 status_label = tk.Label(frame_status, text="Status da Simulação", font=("Arial", 14, "bold"), bg="#f0f0f0", fg="#333333")
 status_label.pack(pady=(0, 10))
@@ -155,12 +155,20 @@ status_texto.pack(side=tk.LEFT, fill=tk.BOTH)
 scrollbar.config(command=status_texto.yview)
 
 frame_espera = tk.Frame(janela, bg="#ffffff", padx=10, pady=10)
-frame_espera.grid(row=4, column=0, padx=20, pady=10)
+frame_espera.grid(row=4, column=0, padx=20, pady=10, sticky="nsew")
 
 log_label_espera = tk.Label(frame_espera, text="Tempo de Espera Médio", font=("Arial", 14, "bold"), bg="#f0f0f0", fg="#333333")
 log_label_espera.pack(pady=(0, 10))
 
 log_texto_espera = tk.Text(frame_espera, height=5, width=60, bg="#f1f1f1", fg="#333333", font=("Arial", 10))
 log_texto_espera.pack()
+
+# Configure the weight for row and column to ensure they expand
+janela.grid_rowconfigure(0, weight=1)
+janela.grid_columnconfigure(0, weight=1)
+janela.grid_rowconfigure(1, weight=1)
+janela.grid_rowconfigure(2, weight=1)
+janela.grid_rowconfigure(3, weight=1)
+janela.grid_rowconfigure(4, weight=1)
 
 janela.mainloop()
