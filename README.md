@@ -5,7 +5,7 @@ Este projeto implementa uma simulação do algoritmo Shortest Job First (SJF) Pr
 ## Requisitos
 - Python 3.x
 - Tkinter (já incluído na maioria das distribuições do Python)
-- Baixe o arquivo sjs_simulator.py e o execute 
+- Baixe o arquivo sjf_simulator.py e o execute 
 
 ## Interface gráfica:
 ### Explicação da Interface
