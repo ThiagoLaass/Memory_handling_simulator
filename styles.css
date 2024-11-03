@@ -4,16 +4,39 @@ body {
     flex-direction: column;
     align-items: center;
     background-color: #f0f0f0;
+    color: #333;
+    margin: 0;
+    padding: 0;
   }
+  
   h2 {
     margin-top: 20px;
+    color: #333;
   }
+
+  button {
+    margin-top: 15px;
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  button:hover {
+    background-color: #218838;
+  }
+  
   #main-container {
     display: flex;
     justify-content: space-around;
     width: 80%;
     margin-top: 20px;
   }
+  
   .memory-section {
     width: 45%;
     padding: 20px;
@@ -22,6 +45,13 @@ body {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     text-align: center;
   }
+  
+  .memory-section h3 {
+    margin-bottom: 15px;
+    font-size: 18px;
+    color: #007BFF;
+  }
+  
   .memory-grid {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
@@ -29,7 +59,22 @@ body {
     min-height: 100px;
     padding: 10px;
     background-color: #f8f9fa;
+    border-radius: 5px;
   }
+
+  .cpu-section {
+    width: 80%;
+    max-width: 400px;
+    margin: 20px 0;
+    padding: 10px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    font-size: 18px;
+    color: #333;
+  }
+  
   .memory-cell {
     width: 100%;
     height: 50px;
@@ -41,25 +86,31 @@ body {
     font-weight: bold;
     color: white;
   }
+  
   .memory-cell-empty {
     background-color: #ddd;
     color: #666;
   }
+  
   .memory-cell-main {
     background-color: #007BFF;
   }
+  
   .memory-cell-virtual {
     background-color: #8E44AD;
   }
+  
   .status {
     width: 80%;
+    max-width: 800px;
     color: #333333;
     margin: 20px 0;
-    height: 100px;
-    overflow-y: scroll;
+    height: 150px;
+    overflow-y: auto;
     background: #ececec;
     padding: 10px;
     border-radius: 5px;
     font-size: 14px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   }
+  
