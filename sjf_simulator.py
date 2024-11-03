@@ -84,7 +84,6 @@ def gerar_campos_processos():
     except ValueError:
         messagebox.showerror("Erro", "Por favor, insira um número inteiro válido.")
         return
-    # Clear only the input fields section, not the average time display section
     for widget in frame_processos.winfo_children():
         widget.destroy()
 
@@ -112,40 +111,31 @@ def calcular_tempo_espera_medio(processos):
     log_espera(f"Tempo médio de espera: {media_espera:.2f}")
 
 def on_frame_configure(event):
-    # Reset the scroll region to encompass the entire frame
     canvas.configure(scrollregion=canvas.bbox("all"))
 
 def add_scrollbar_to_window():
     global canvas
     global frame_content
 
-    # Create a canvas
     canvas = tk.Canvas(janela, bg="#f0f0f0")
     canvas.grid(row=0, column=0, sticky="nsew")
 
-    # Add a vertical scrollbar linked to the canvas
     scrollbar = tk.Scrollbar(janela, orient="vertical", command=canvas.yview)
     scrollbar.grid(row=0, column=1, sticky="ns")
     canvas.configure(yscrollcommand=scrollbar.set)
 
-    # Create a frame inside the canvas to hold all the widgets
     frame_content = tk.Frame(canvas, bg="#f0f0f0")
 
-    # Add the frame to the canvas
     canvas.create_window((0, 0), window=frame_content, anchor="nw")
 
-    # Bind the frame's configuration to update the canvas' scroll region
     frame_content.bind("<Configure>", on_frame_configure)
 
-# Initialize main window
 janela = tk.Tk()
 janela.title("Simulação SJF Preemptivo")
 janela.configure(bg="#f0f0f0")
 
-# Call the function to add scrollbar to the whole window
 add_scrollbar_to_window()
 
-# Create the process input section and status frames inside the frame_content
 frame_num_processos = tk.Frame(frame_content, bg="#f0f0f0", padx=10, pady=10)
 frame_num_processos.grid(row=0, column=0, padx=10, pady=5, sticky="nsew")
 
@@ -190,7 +180,6 @@ log_texto_espera = tk.Text(frame_espera, height=6, width=70, bg="#ECF0F1", fg="#
 log_texto_espera.pack(side=tk.LEFT, fill=tk.BOTH)
 scrollbar_espera.config(command=log_texto_espera.yview)
 
-# Adjust the scrollable window dimensions
 janela.grid_rowconfigure(0, weight=1)
 janela.grid_columnconfigure(0, weight=1)
 

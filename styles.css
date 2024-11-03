@@ -1,0 +1,65 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #f0f0f0;
+  }
+  h2 {
+    margin-top: 20px;
+  }
+  #main-container {
+    display: flex;
+    justify-content: space-around;
+    width: 80%;
+    margin-top: 20px;
+  }
+  .memory-section {
+    width: 45%;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+  }
+  .memory-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 10px;
+    min-height: 100px;
+    padding: 10px;
+    background-color: #f8f9fa;
+  }
+  .memory-cell {
+    width: 100%;
+    height: 50px;
+    border: 2px solid #333;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    color: white;
+  }
+  .memory-cell-empty {
+    background-color: #ddd;
+    color: #666;
+  }
+  .memory-cell-main {
+    background-color: #007BFF;
+  }
+  .memory-cell-virtual {
+    background-color: #8E44AD;
+  }
+  .status {
+    width: 80%;
+    color: #333333;
+    margin: 20px 0;
+    height: 100px;
+    overflow-y: scroll;
+    background: #ececec;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 14px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }

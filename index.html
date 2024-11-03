@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="styles.css">
+<title>Simulação de Memória Paginada com SJF</title>
+</head>
+<body>
+
+<h2>Simulação de Memória Paginada com SJF</h2>
+<button onclick="startSimulation()">Iniciar Simulação</button>
+
+<div id="main-container">
+  <div class="memory-section">
+    <h3>Memória Principal</h3>
+    <div id="main-memory" class="memory-grid">
+      <!-- Células de memória serão adicionadas dinamicamente aqui -->
+    </div>
+  </div>
+  <div class="memory-section">
+    <h3>Memória Virtual</h3>
+    <div id="virtual-memory" class="memory-grid">
+      <!-- Células de memória serão adicionadas dinamicamente aqui -->
+    </div>
+  </div>
+</div>
+
+<div class="status" id="status-log">
+  <h4>Status Log</h4>
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
