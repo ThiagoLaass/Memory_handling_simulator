@@ -32,8 +32,3 @@ A CPU pode estar executando uma página, ou ociosa, como mostra a imagem abaixo:
 - Ao abrir a aplicação, os processos serão gerados automaticamente e alocados na memória principal.
 - Durante a execução, se a memória principal estiver cheia, os processos serão movidos para a memória virtual.
 - A cada unidade de tempo, o processo com o menor tempo restante será executado, e a visualização mostrará as mudanças na alocação de memória.
-
-## Integrantes do Grupo
-- Thiago Laass
-- Lucas Valente
-- Luisa Clara de Paula
